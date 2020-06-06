@@ -13,7 +13,7 @@ import java.nio.ByteBuffer;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class TextExtractor {
+public class Extractor {
 
     public List<String> extractText() {
         String document="archive_example.png";
