@@ -12,5 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout
+      run: git clone git@github.com:LorenzoCianciaruso/every-name-counts.git
+
     - name: Build step
       run: ./gradlew build
