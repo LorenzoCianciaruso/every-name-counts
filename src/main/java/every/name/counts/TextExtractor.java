@@ -2,9 +2,7 @@ package every.name.counts;
 
 import com.amazonaws.services.textract.AmazonTextract;
 import com.amazonaws.services.textract.AmazonTextractClientBuilder;
-import com.amazonaws.services.textract.model.AnalyzeDocumentRequest;
-import com.amazonaws.services.textract.model.AnalyzeDocumentResult;
-import com.amazonaws.services.textract.model.Document;
+import com.amazonaws.services.textract.model.*;
 import org.apache.commons.io.IOUtils;
 
 import java.io.File;
@@ -12,10 +10,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class TextExtractor {
 
-    public void extractText() {
+    public List<String> extractText() {
         String document="archive_example.png";
 
         ByteBuffer imageBytes = null;
@@ -27,9 +27,12 @@ public class TextExtractor {
 
         AmazonTextract client = AmazonTextractClientBuilder.defaultClient();
 
-        AnalyzeDocumentRequest analyzeDocumentRequest = new AnalyzeDocumentRequest().withDocument(new Document().withBytes(imageBytes)).withFeatureTypes("FORMS");
+        DetectDocumentTextRequest detectDocumentTextRequest = new DetectDocumentTextRequest().withDocument(new Document().withBytes(imageBytes));
 
-        AnalyzeDocumentResult analyzeDocumentResult = client.analyzeDocument(analyzeDocumentRequest);
-        System.out.println(analyzeDocumentResult.toString());
+        DetectDocumentTextResult detectDocumentTextResult = client.detectDocumentText(detectDocumentTextRequest);
+        return detectDocumentTextResult.getBlocks().stream()
+                .filter(it -> it.getBlockType().equals("LINE"))
+                .map(Block::getText)
+                .collect(Collectors.toList());
     }
 }

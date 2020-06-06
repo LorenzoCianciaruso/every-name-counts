@@ -5,8 +5,4 @@ package every.name.counts;
 
 import org.junit.Test;
 
-public class AppTest {
-    @Test public void testAppHasAGreeting() {
-        new TextExtractor().extractText();
-    }
-}
+public class AppTest { }
