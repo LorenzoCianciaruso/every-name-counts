@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - name: Checkout
-      run: git clone git@github.com:LorenzoCianciaruso/every-name-counts.git
+      uses: actions/checkout@master
 
     - name: Build step
       run: ./gradlew build
