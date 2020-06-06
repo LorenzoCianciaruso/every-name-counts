@@ -11,7 +11,8 @@ dependencies {
     implementation 'com.google.guava:guava:29.0-jre'
     implementation platform('software.amazon.awssdk:bom:2.13.9')
     implementation 'software.amazon.awssdk:textract'
-    implementation 'com.amazonaws:aws-java-sdk-s3'
+    implementation group: 'com.amazonaws', name: 'aws-java-sdk-textract', version: '1.11.796'
+    implementation group: 'commons-io', name: 'commons-io', version: '2.6'
 
     testImplementation 'junit:junit:4.13'
 }
@@ -19,3 +20,5 @@ dependencies {
 application {
     mainClassName = 'every.name.counts.App'
 }
+
+run.doFirst { environment 'AWS_PROFILE', 'personal' }
