@@ -8,7 +8,7 @@ import java.util.List;
 public class App {
 
     public static void main(String[] args) {
-        List<String> strings = new Extractor().extractText();
+        List<Feature> strings = new Extractor().extractText();
         strings.forEach(System.out::println);
     }
 }

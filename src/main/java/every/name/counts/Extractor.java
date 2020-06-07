@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 public class Extractor {
 
-    public List<String> extractText() {
+    public List<Feature> extractText() {
         String document="archive_example.png";
 
         ByteBuffer imageBytes = null;
@@ -32,7 +32,10 @@ public class Extractor {
         DetectDocumentTextResult detectDocumentTextResult = client.detectDocumentText(detectDocumentTextRequest);
         return detectDocumentTextResult.getBlocks().stream()
                 .filter(it -> it.getBlockType().equals("LINE"))
-                .map(Block::getText)
+                .map(it -> new Feature(
+                                it.getText(),
+                                it.getGeometry().getBoundingBox().getTop(),
+                                it.getGeometry().getBoundingBox().getLeft()))
                 .collect(Collectors.toList());
     }
 }
