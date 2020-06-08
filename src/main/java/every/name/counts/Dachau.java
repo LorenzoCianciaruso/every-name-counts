@@ -12,9 +12,9 @@ public class Dachau extends Transcriptor {
     @Override
     public Prisoner transcript(){
         return Prisoner.builder()
-                .lastName(lastNameMatcher.match(this.features).getFeature())
-                .prisonerNumber(this.features.get(1).getFeature())
-                .category(this.features.get(2).getFeature())
+                .lastName(lastNameMatcher.match(this.features).getText())
+                .prisonerNumber(this.features.get(1).getText())
+                .category(this.features.get(2).getText())
                 .build();
     }
 }

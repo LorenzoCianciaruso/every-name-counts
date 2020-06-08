@@ -32,10 +32,13 @@ public class Extractor {
         DetectDocumentTextResult detectDocumentTextResult = client.detectDocumentText(detectDocumentTextRequest);
         return detectDocumentTextResult.getBlocks().stream()
                 .filter(it -> it.getBlockType().equals("LINE"))
-                .map(it -> new Feature(
-                                it.getText(),
-                                it.getGeometry().getBoundingBox().getTop(),
-                                it.getGeometry().getBoundingBox().getLeft()))
+                .map(it -> Feature.builder()
+                            .text(it.getText())
+                            .top(it.getGeometry().getBoundingBox().getTop())
+                            .left(it.getGeometry().getBoundingBox().getLeft())
+                            .height(it.getGeometry().getBoundingBox().getHeight())
+                            .width(it.getGeometry().getBoundingBox().getWidth())
+                        .build())
                 .collect(Collectors.toList());
     }
 }

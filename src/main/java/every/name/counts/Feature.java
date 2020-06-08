@@ -1,22 +1,30 @@
 package every.name.counts;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import org.checkerframework.checker.units.qual.A;
 
 @Getter
+@Builder
+@AllArgsConstructor
 public class Feature {
-    private String feature;
-    private Position position;
+    private String text;
 
-    public Feature(String feature, double top, double left) {
-        this.feature = feature;
-        this.position = new Position(top, left);
-    }
+    private Float top;
+    private Float left;
+    private Float height;
+    private Float width;
 
     public boolean isTopHeader() {
-        return position.getTop() < (1.0 / 8);
+        return top < (1.0 / 8);
     }
 
     public boolean isLeftColumn() {
-        return position.getLeft() < 0.4;
+        return left < 0.4;
+    }
+
+    public Point getCentre() {
+        return new Point(left + (width / 2), top + (height / 2));
     }
 }
