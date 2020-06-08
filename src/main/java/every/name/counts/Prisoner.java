@@ -14,7 +14,7 @@ public class Prisoner {
     private String placeOfBirth;
     private String addressLine1;
     private String addressLine2;
-    private String profession;
+    private String occupation;
     private String religion;
     private String nationality;
     private String category;

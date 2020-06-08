@@ -8,7 +8,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
-public class MatcherTest {
+public class DachauTest {
 
     private Feature feature1 = new Feature("Celesnik", 0.06868945062160492, 0.03985276818275452);
     private Feature feature2 = new Feature("41014", 0.08785675466060638, 0.48806053400039673);
@@ -42,7 +42,7 @@ public class MatcherTest {
 
     @Test
     public void matchFeatures(){
-        Prisoner prisoner = new Matcher().match(features);
+        Prisoner prisoner = new Dachau(features).transcript();
 
         assert prisoner.getLastName().equals("Celesnik");
         assert prisoner.getPrisonerNumber().equals("41014");
