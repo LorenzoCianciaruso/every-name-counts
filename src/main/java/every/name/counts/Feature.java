@@ -16,14 +16,26 @@ public class Feature {
     private Float width;
 
     public boolean isTopHeader() {
-        return top < (1.0 / 8);
+        return this.getCentre().getY() < 0.15;
     }
 
     public boolean isLeftColumn() {
-        return left < 0.4;
+        return this.getCentre().getX() < 0.5;
+    }
+
+    public boolean isRightColumn() {
+        return this.getCentre().getX() >= 0.5;
     }
 
     public Point getCentre() {
         return new Point(left + (width / 2), top + (height / 2));
+    }
+
+    public boolean containsNumberOnly() {
+        return this.getText().matches("[0-9]{3,6}");
+    }
+
+    public boolean containsLettersOnly() {
+        return this.getText().matches("[a-zA-Z]{2,5}");
     }
 }
