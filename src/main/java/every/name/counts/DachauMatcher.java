@@ -14,7 +14,10 @@ public class DachauMatcher implements Matcher {
 
     @Override
     public Feature matchFirstName(List<Feature> features) {
-        return null;
+        return features.stream()
+                .filter(Feature::isLeftColumn)
+                .filter(Feature::isSecondRow)
+                .findFirst().orElse(null);
     }
 
     @Override
@@ -34,4 +37,14 @@ public class DachauMatcher implements Matcher {
                 .filter(Feature::containsLettersOnly)
                 .findFirst().orElse(null);
     }
+
+    @Override
+    public Feature matchDateOfBirth(List<Feature> features) {
+        return features.stream()
+                .filter(Feature::isRightColumn)
+                .filter(Feature::isSecondRow)
+                .filter(Feature::isADate)
+                .findFirst().orElse(null);
+    }
+
 }

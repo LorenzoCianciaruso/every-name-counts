@@ -30,7 +30,23 @@ public class DachauMatcherTest {
             .width(0.10697268694639206f)
             .build();
 
-    private List<Feature> features = Arrays.asList(feature1, feature2, feature3);
+    private Feature feature4 = Feature.builder()
+            .text("RudolJ")
+            .width(0.178743377327919f)
+            .height(0.05900321900844574f)
+            .left(0.06391783803701401f)
+            .top(0.21229708194732666f)
+            .build();
+
+    private Feature feature5 = Feature.builder()
+            .text("1.8505")
+            .width(0.16593046486377716f)
+            .height(0.07100813090801239f)
+            .left(0.7893207669258118f)
+            .top(0.20976382493972778f)
+            .build();
+
+    private List<Feature> features = Arrays.asList(feature1, feature2, feature3, feature4, feature5);
 
     private Matcher matcher = new DachauMatcher();
 
@@ -47,5 +63,15 @@ public class DachauMatcherTest {
     @Test
     public void matchCategory() {
         assert matcher.matchCategory(features) == feature3;
+    }
+
+    @Test
+    public void matchFirstName() {
+        assert matcher.matchFirstName(features) == feature4;
+    }
+
+    @Test
+    public void matchDateOfBirth() {
+        assert matcher.matchDateOfBirth(features) == feature5;
     }
 }

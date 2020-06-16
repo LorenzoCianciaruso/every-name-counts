@@ -38,4 +38,13 @@ public class Feature {
     public boolean containsLettersOnly() {
         return this.getText().matches("[a-zA-Z]{2,5}");
     }
+
+    public boolean isSecondRow() {
+        Float y = this.getCentre().getY();
+        return y > 0.15 && y < 0.28;
+    }
+
+    public boolean isADate() {
+        return this.getText().matches("[0-9]{1,2}.[0-9]{1,2}.[0-9]{2}");
+    }
 }

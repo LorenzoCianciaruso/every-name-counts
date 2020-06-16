@@ -11,4 +11,6 @@ public interface Matcher {
     Feature matchPrisonerNumber(List<Feature> features);
 
     Feature matchCategory(List<Feature> features);
+
+    Feature matchDateOfBirth(List<Feature> features);
 }
