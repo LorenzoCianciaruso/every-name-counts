@@ -18,5 +18,5 @@ public class Prisoner {
     private String religion;
     private String nationality;
     private String category;
-    private String imprisonmentStartDate;
+    private String imprisonmentDate;
 }

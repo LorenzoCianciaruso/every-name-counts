@@ -46,7 +46,23 @@ public class DachauMatcherTest {
             .top(0.20976382493972778f)
             .build();
 
-    private List<Feature> features = Arrays.asList(feature1, feature2, feature3, feature4, feature5);
+    private Feature feature6 = Feature.builder()
+            .text("alkwalger")
+            .width(0.2774980664253235f)
+            .height(0.05516871064901352f)
+            .left(0.07391248643398285f)
+            .top(0.32737958431243896f)
+            .build();
+
+    private Feature feature7 = Feature.builder()
+            .text("6. Dez. 1942 hatas")
+            .width(0.3990698754787445f)
+            .height(0.08111013472080231f)
+            .left(0.06321512162685394f)
+            .top(0.4207049012184143f)
+            .build();
+
+    private List<Feature> features = Arrays.asList(feature1, feature2, feature3, feature4, feature5, feature6, feature7);
 
     private Matcher matcher = new DachauMatcher();
 
@@ -73,5 +89,22 @@ public class DachauMatcherTest {
     @Test
     public void matchDateOfBirth() {
         assert matcher.matchDateOfBirth(features) == feature5;
+    }
+
+    @Test
+    public void matchProfession() {
+        assert matcher.matchProfession(features) == feature6;
+    }
+
+    @Test
+    public void matchImprisonmentDate() {
+//        Feature expectedFeature = Feature.builder()
+//                .text("6.12.1942")
+//                .width(0.3990698754787445f)
+//                .height(0.08111013472080231f)
+//                .left(0.06321512162685394f)
+//                .top(0.4207049012184143f)
+//                .build();
+        assert matcher.matchImprisonmentDate(features) == feature7;
     }
 }

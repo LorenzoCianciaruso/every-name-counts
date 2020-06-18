@@ -41,10 +41,20 @@ public class Feature {
 
     public boolean isSecondRow() {
         Float y = this.getCentre().getY();
-        return y > 0.15 && y < 0.28;
+        return y >= 0.15 && y < 0.28;
     }
 
     public boolean isADate() {
-        return this.getText().matches("[0-9]{1,2}.[0-9]{1,2}.[0-9]{2}");
+        return this.getText().matches("(?i)\\d{1,2}.?\\s?(\\d{1,2}|Jan|Feb|Mär|Apr|Mai|Jun|Jul|Aug|Sep|Okt|Nov|Dez).?\\s?\\d{2,4}.*");
+    }
+
+    public boolean isThirdRow() {
+        Float y = this.getCentre().getY();
+        return y >= 0.28 && y < 0.41;
+    }
+
+    public boolean isFourthRow() {
+        Float y = this.getCentre().getY();
+        return y >= 0.41 && y < 0.55;
     }
 }

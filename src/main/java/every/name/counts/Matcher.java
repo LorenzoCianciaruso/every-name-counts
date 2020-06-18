@@ -13,4 +13,8 @@ public interface Matcher {
     Feature matchCategory(List<Feature> features);
 
     Feature matchDateOfBirth(List<Feature> features);
+
+    Feature matchProfession(List<Feature> features);
+
+    Feature matchImprisonmentDate(List<Feature> features);
 }

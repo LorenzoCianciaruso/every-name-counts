@@ -47,4 +47,21 @@ public class DachauMatcher implements Matcher {
                 .findFirst().orElse(null);
     }
 
+    @Override
+    public Feature matchProfession(List<Feature> features) {
+        return features.stream()
+                .filter(Feature::isLeftColumn)
+                .filter(Feature::isThirdRow)
+                .findFirst().orElse(null);
+    }
+
+    @Override
+    public Feature matchImprisonmentDate(List<Feature> features) {
+        return features.stream()
+                .filter(Feature::isLeftColumn)
+                .filter(Feature::isFourthRow)
+                .filter(Feature::isADate)
+                .findFirst().orElse(null);
+    }
+
 }
